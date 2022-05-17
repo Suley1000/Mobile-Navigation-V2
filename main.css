@@ -1,0 +1,121 @@
+/* General styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Nunito", sans-serif;
+}
+
+/*Made container flex to center nav */
+.nav-container {
+  height: 80px;
+  display: flex;
+  align-items: center;
+}
+
+/* made nav flex to space out logo and links*/
+nav {
+  display: flex;
+  width: 80%;
+  margin: 0 auto;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Flex because to lay links in row */
+.nav-menu {
+  display: flex;
+  gap: 15px;
+  list-style: none;
+}
+
+/* link styling */
+.nav-link:link,
+.nav-link:visited {
+  text-decoration: none;
+  color: grey;
+}
+
+.nav-link:hover,
+.nav-link:active {
+  color: black;
+  transition: 0.3s all;
+}
+
+.nav-link-btn:link,
+.nav-link-btn:visited {
+  color: white;
+  background-color: black;
+  padding: 5px 10px;
+}
+
+.nav-link-btn:hover,
+.nav-link-btn:active {
+  color: black;
+  background-color: white;
+  box-shadow: inset 0px 0px 0px 2px black;
+}
+
+/* icon sstyling with name attribute */
+/* Initialy made mobile icons disappear */
+ion-icon {
+  font-size: 28px;
+}
+
+[name="menu-outline"] {
+  display: none;
+}
+
+[name="close-outline"] {
+  display: none;
+}
+
+/* media query to make nav menu disapear */
+@media screen and (max-width: 500px) {
+  /* position relative for absolute child */
+  .nav-container {
+    position: relative;
+    background-color: white;
+  }
+
+  /* Made nav menu */
+  /* Position absolute to hide element for animation */
+  /* top -80px because parent is 80px */
+  .nav-menu {
+    position: absolute;
+    top: -80px;
+    left: 0;
+    background-color: #ced4da;
+    width: 100%;
+    flex-direction: column;
+    text-align: center;
+    padding: 10px 0;
+    z-index: -1;
+    opacity: 0;
+    transition: all 0.5s ease;
+  }
+
+  .nav-menu.active {
+    transform: translateY(0);
+    top: 80px;
+    opacity: 1;
+    transition: all 0.5s ease;
+  }
+
+  .nav-link {
+    display: inline-block;
+  }
+
+  [name="menu-outline"] {
+    display: block;
+  }
+
+  /* toggle class when mobile icon clicked */
+  [name="menu-outline"].active {
+    display: none;
+  }
+
+  [name="close-outline"].active {
+    display: block;
+  }
+}
